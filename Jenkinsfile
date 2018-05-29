@@ -2,6 +2,9 @@ pipeline {
   agent {
     label 'jdk9'
   }
+  libraries {
+    lib("SharedLibs")
+  }
   stages {
     stage('build1') {
       steps {
@@ -35,6 +38,11 @@ pipeline {
             }
           }
         }
+      }
+    stage('Shared Lib') {
+         steps {
+             helloWorld("Jenkins")
+         }
       }
   }
   environment {
